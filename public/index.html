@@ -1,0 +1,145 @@
+<html lang="en">
+<head>
+    <title>CSE312 Homework App</title>
+    <link rel="stylesheet" type="text/css" href="/public/style.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/public/favicon.ico">
+</head>
+
+<body onload="welcome();">
+
+<div class="title">
+    <h2>CSE312 App</h2>
+</div>
+
+<div class="header">
+    <div class="image_div">
+        <img src="/public/image/eagle.jpg" alt="It's an eagle" class="my_image"/>
+    </div>
+    <div class="welcome-div">
+        <p id="paragraph">
+            Welcome to CSE312 Social. You're one stop for chat, image uploads, and video calls 🙂.
+            You've been here {{visits}} times.
+        </p>
+    </div>
+</div>
+
+
+<div class="contents">
+
+    <div class="chat">
+
+
+        <div id="chat-messages">
+        </div>
+
+
+        <div class="chat-form">
+            <hr>
+            <label>
+                Chat:
+                <input id="chat-text-box" type="text">
+            </label>
+            <button id="chat-button" onclick="sendChat()">Send</button>
+            <input value="{{ xsrf }}" id="xsrf_token" hidden>
+            <label id="xsrf_token" value="" hidden>{{xsrf_token}}</label>
+        </div>
+
+        <div class="file-upload">
+            <form action="/media-upload" id="media-form" method="post" enctype="multipart/form-data">
+                <label for="upload-file">Upload File: </label>
+                <input id="upload-file" type="file" name="upload">
+                <input type="submit" value="Post">
+            </form>
+        </div>
+
+    </div>
+
+    <div class="video-chat">
+        <video class="webrtc-video" id="myVideo" autoplay muted></video>
+        <br/>
+        <video class="webrtc-video" id="otherVideo" autoplay></video>
+
+        <br/>
+        <button onclick="startVideo()">Start My Video</button>
+        <br/>
+        <button onclick="connectWebRTC()">Start Video Chat</button>
+        <br/>
+        <br/>
+        <label>DMS:</label>
+        <div id="dm-display">
+        </div>
+    </div>
+
+    <div class="user-list">
+
+        <form id="register-section" action="/register" method="post" enctype="application/x-www-form-urlencoded">
+            <label>Register:</label>
+            <br>
+            <label>Username:
+                <input id="reg-form-username" type="text" name="username_reg"/>
+            </label>
+            <br/>
+            <label>Password:&nbsp;
+                <input id="reg-form-pass" type="password" name="password_reg">
+            </label>
+            <input type="submit" value="Post" onclick="">
+        </form>
+
+        <form id="login-section" action="/login" method="post" enctype="application/x-www-form-urlencoded">
+            <label>Login:</label>
+            <br> 
+            <label>Username:
+                <input id="login-form-username" type="text" name="username_login"/>
+            </label>
+            <br/>
+            <label>Password:&nbsp;
+                <input id="login-form-pass" type="password" name="password_login">
+            </label>
+            <input type="submit" value="Post" onclick="login()">
+        </form>
+
+        
+        <form id="logout-section" action="/logout" method="post" enctype="application/x-www-form-urlencoded">
+            <label>Logout:</label>
+            <input type="submit"  value="Post" onclick="logout()">
+        </form>
+
+
+        <form action="/profile-pic" id="image-form" method="post" enctype="multipart/form-data">
+            <br/>
+            <label for="form-file">Change profile picture: </label>
+            <input id="form-file" type="file" name="upload">
+            <br/>
+            <input type="submit" value="Post">
+        </form>
+
+        <label>User List:</label>
+        <div id="user-display">
+        </div>
+
+        <div class="dm-form">
+            <hr>
+            <label>
+                DM:
+                <input id="dm-message" type="text">
+            </label>
+            <input value="{{ xsrf }}" id="xsrf_token2" hidden>
+            <label id="xsrf_token2" value="" hidden>{{xsrf_token}}</label>
+        </div>
+
+        <!-- <div class="file-upload">
+            <form action="/DMmedia-upload" id="media-form2" method="post" enctype="multipart/form-data">
+                <label for="upload-file">Upload File: </label>
+                <input id="upload-file2" type="file" name="upload">
+            </form>
+        </div> -->
+
+
+    </div>
+</div>
+
+
+<script src="/public/functions.js"></script>
+<script src="/public/webrtc.js"></script>
+</body>
+</html>

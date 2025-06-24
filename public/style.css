@@ -1,0 +1,85 @@
+
+body {
+    background-color: #000000;
+    color: white;
+}
+
+.welcome-div {
+    margin-left: 12%;
+}
+
+.my_image {
+    height: 100%;
+}
+
+.image_div {
+    height: 80%;
+    width: 0;
+}
+
+img.post {
+    width: 120px;
+}
+
+.title {
+    height: 5%;
+}
+
+.header {
+    display: flex;
+    /*justify-content: space-around;*/
+    background-color: #F6F1F1;
+    color: black;
+    height: 17%;
+    align-items: center;
+}
+
+.contents {
+    display: flex;
+    justify-content: space-around;
+    height: 78%
+}
+
+.chat {
+    width: 70%;
+    background-color: #f5b113;
+    padding: 20px;
+}
+
+.video-chat {
+    background-color: #b4820d;
+        padding: 20px;
+
+}
+
+#chat-messages {
+    height: 90%;
+    overflow: scroll;
+}
+
+#dm-display {
+    height: 40%;
+    overflow: scroll;
+}
+
+#user-display {
+    overflow: scroll;
+}
+
+.chat-form {
+    height: 30px;
+}
+
+.user-list {
+    width: 30%;
+    background-color: #534d4d;
+    padding: 20px;
+}
+
+.header > div {
+    padding: 20px;
+}
+
+.webrtc-video {
+    width: 100%;
+}
